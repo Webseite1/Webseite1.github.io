@@ -3,12 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <title>Registrierung</title>
+  <script>
+    let startTime;
+
+    window.onload = () => {
+      startTime = Date.now();
+    };
+
+    function validatePassword(pw) {
+      // Mindest 8 Zeichen, 1 Zahl, 1 Sonderzeichen (einfaches Beispiel)
+      const re = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+      return re.test(pw);
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (!validatePassword(password)) {
+        alert('Passwort muss mindestens 8 Zeichen, eine Zahl und ein Sonderzeichen enthalten.');
+        return;
+      }
+      const timeTaken = (Date.now() - startTime) / 1000; // Sekunden
+
+      // Weiterleitung mit Daten als URL-Parameter zur Login-Seite
+      const url = `login.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&regtime=${timeTaken}`;
+      window.location.href = url;
+    }
+  </script>
 </head>
 <body>
   <h1>Registrierung</h1>
-  <form action="login.html" method="get">
-    <label>Nutzername: <input type="text" name="username" required /></label><br/>
-    <label>Passwort: <input type="password" name="password" required /></label><br/>
+  <form onsubmit="submitForm(event)">
+    <label>Nutzername: <input type="text" id="username" required /></label><br/>
+    <label>Passwort: <input type="password" id="password" required /></label><br/>
     <button type="submit">Registrieren</button>
   </form>
 </body>
