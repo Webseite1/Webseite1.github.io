@@ -11,7 +11,6 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
       const regtime = (Date.now() - startTime) / 1000;
-      // Weiterleitung an Login, übergebe registrierte Daten
       const url = `login.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&regtime=${regtime}`;
       window.location.href = url;
     }
