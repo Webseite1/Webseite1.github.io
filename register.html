@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <title>Registrierung</title>
+  <meta charset="UTF-8">
+  <title>Bank-Registrierung</title>
+  <style>
+    body { background: #e9ecef; font-family: Arial, sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; margin:0; }
+    .card { background:#fff; padding:40px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); width:360px; }
+    .logo { text-align:center; margin-bottom:20px; }
+    .logo img { width:120px; }
+    h2 { color:#004481; text-align:center; margin-bottom:20px; }
+    label { display:block; margin-bottom:10px; }
+    input { width:100%; padding:10px; margin-top:4px; border:1px solid #ccc; border-radius:4px; }
+    button { width:100%; padding:12px; background:#004481; color:#fff; border:none; border-radius:4px; font-size:16px; margin-top:20px; cursor:pointer; }
+  </style>
   <script>
     let startTime;
-    window.onload = () => { startTime = Date.now(); };
-    function submitForm(e) {
-      e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      const regtime = (Date.now() - startTime) / 1000;
-      const url = `login.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&regtime=${regtime}`;
-      window.location.href = url;
-    }
+    window.onload=()=>{ startTime=Date.now(); };
+    function submitForm(e){ e.preventDefault(); const u=document.getElementById('username').value; const p=document.getElementById('password').value; const rt=(Date.now()-startTime)/1000; const url=`login.html?username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}&regtime=${rt}`; window.location.href=url; }
   </script>
 </head>
 <body>
-  <h1>Registrierung</h1>
-  <form onsubmit="submitForm(event)">
-    <label>Nutzername: <input type="text" id="username" required /></label><br/>
-    <label>Passwort: <input type="password" id="password" required /></label><br/>
-    <button type="submit">Registrieren</button>
-  </form>
+  <div class="card">
+    <div class="logo"><img src="https://via.placeholder.com/120x40?text=Bank+Logo" alt="Bank Logo"></div>
+    <h2>Registrierung</h2>
+    <form onsubmit="submitForm(event)">
+      <label>Nutzername<input type="text" id="username" required></label>
+      <label>Passwort<input type="password" id="password" required></label>
+      <button type="submit">Registrieren</button>
+    </form>
+  </div>
 </body>
 </html>
