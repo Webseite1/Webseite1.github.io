@@ -6,8 +6,7 @@
   <script>
     let startTime;
     function getParams() {
-      const p = new URLSearchParams(window.location.search);
-      return Object.fromEntries(p.entries());
+      return Object.fromEntries(new URLSearchParams(window.location.search).entries());
     }
     window.onload = () => {
       startTime = Date.now();
@@ -19,14 +18,12 @@
       const params = getParams();
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-      // Prüfen, ob Passwort mit dem registrierten übereinstimmt
       if (password !== params.password) {
-        alert('Das eingegebene Passwort stimmt nicht mit dem bei der Registrierung überein.');
+        alert('Passwort stimmt nicht mit der Registrierung überein.');
         return;
       }
       const logintime = (Date.now() - startTime) / 1000;
-      // Zurück zur Steuerseite mit allen Daten
-      const target = `http://hinmaab.github.io/index.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&regtime=${params.regtime}&logintime=${logintime}`;
+      const target = `https://hinmaab.github.io/index.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&regtime=${params.regtime}&logintime=${logintime}`;
       window.location.href = target;
     }
   </script>
