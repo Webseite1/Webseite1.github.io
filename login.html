@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Login</title>
   <script>
     let startTime;
-    function getParams() {
-      return Object.fromEntries(new URLSearchParams(window.location.search).entries());
-    }
+    function getParams() { return Object.fromEntries(new URLSearchParams(window.location.search).entries()); }
     window.onload = () => {
       startTime = Date.now();
       const params = getParams();
@@ -23,7 +21,7 @@
         return;
       }
       const logintime = (Date.now() - startTime) / 1000;
-      const target = `https://hinmaab.github.io/index.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&regtime=${params.regtime}&logintime=${logintime}`;
+      const target = `https://hinmaab.github.io/index.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&regtime=${params.regtime}&logintime=${logintime}&startStep=5`;
       window.location.href = target;
     }
   </script>
