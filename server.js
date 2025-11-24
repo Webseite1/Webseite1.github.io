@@ -15,7 +15,7 @@ app.use(express.static(__dirname));
 
 // ===== Datenbank-Connection =====
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL1,
   ssl: { rejectUnauthorized: false }
 });
 
