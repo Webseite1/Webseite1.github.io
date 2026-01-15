@@ -165,14 +165,20 @@
 
 <!-- Erfolgs-Screen Login -->
 <div id="loginSuccessScreen" class="container screen">
-  <h2>Login erfolgreich!</h2>
-  <p>Sie haben sich erfolgreich eingeloggt. Für heute sind Sie fertig mit der Studie.</p>
-  
+    <h2>Login erfolgreich!</h2>
+    <p>Sie haben sich erfolgreich eingeloggt.</p>
+    <p>Bitte folgen Sie den Anweisungen in der E-Mail.</p>
 </div>
 
 <script>
 const siteName = "KrankenkasseABC"; 
 let startTime = null;
+
+// Direkt zum Login wechseln, wenn ?mode=login gesetzt ist
+const params = new URLSearchParams(window.location.search);
+if (params.get("mode") === "login") {
+  show("loginScreen");
+}
 
 // Fehlversuche
 let regAttempts = 0;
